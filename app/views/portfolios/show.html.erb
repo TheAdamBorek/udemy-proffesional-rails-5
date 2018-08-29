@@ -1,0 +1,8 @@
+<%= image_tag @portfolio.main_image unless @portfolio.main_image.nil? %>
+<h1><%= @portfolio.title %></h1>
+<p>ID: <%= @portfolio.id %></p>
+<p><%= @portfolio.subtitle %></p>
+<p><%= @portfolio.body %></p>
+<p><%= @portfolio.created_at %></p>
+
+<%= link_to "Edit", edit_portfolio_path(@portfolio.id) %>

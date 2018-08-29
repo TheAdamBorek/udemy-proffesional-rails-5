@@ -4,8 +4,8 @@
 <%= link_to "Create new portfolio", new_portfolio_path %>
 
 <% @portfolios.each do |portfolio| %>
-  <p><%= portfolio.title %>: <%= portfolio.id %></p>
-  <%= link_to "Edit", edit_portfolio_path(portfolio.id) %>
+  <p><%= link_to portfolio.title, portfolio_path(portfolio) %>: <%= portfolio.id %></p>
+  <%= link_to "Edit", edit_portfolio_path(portfolio) %>
   <p><%= portfolio.thumb_image %></p>
   <%= image_tag portfolio.thumb_image unless portfolio.thumb_image.nil? %>
 <% end %>
