@@ -1,5 +1,5 @@
 class PortfoliosController < ApplicationController
-  before_action :find_portfolio, only: [:show, :edit, :update]
+  before_action :find_portfolio, only: [:show, :edit, :update, :destroy]
 
   def index
     @portfolios = Portfolio.all
@@ -28,6 +28,14 @@ class PortfoliosController < ApplicationController
     respond_to do |format|
       if @portfolio.update(portfolio_params)
         format.html { redirect_to portfolios_path, notice: "Did change the portfolio #{@portfolio.id}" }
+      end
+    end
+  end
+
+  def destroy
+    respond_to do | format |
+      if @portfolio.destroy
+        format.html { redirect_to portfolios_path, notice: "Portfolio #{@portfolio.title} was deleted!"}
       end
     end
   end
