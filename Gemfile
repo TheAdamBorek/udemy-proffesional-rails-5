@@ -80,3 +80,4 @@ group :development do
 end
 
 gem 'devise'
+gem 'friendly_id'
