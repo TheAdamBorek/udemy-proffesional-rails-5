@@ -5,15 +5,6 @@ class Portfolio < ApplicationRecord
   has_many :technologies
   accepts_nested_attributes_for :technologies,
                                 reject_if: lambda { |attributes| attributes['name'].blank? }
-
-  def self.angular
-    where(subtitle: "Angular")
-  end
-
-  def self.ruby_on_rails
-    where(subtitle: "Ruby on Rails")
-  end
-
   private
 
   def set_defaults
