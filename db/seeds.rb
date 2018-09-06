@@ -17,7 +17,7 @@ end
 9.times do |i|
   Post.create!(
       {
-          title: "Portfolio #{i}",
+          title: "Post #{i}",
           body: lorem,
           topic_id: Topic.all[rand 3]
       }
@@ -42,4 +42,9 @@ end
       main_image: 'https://fakeimg.pl/600x300/',
       thumb_image: 'https://fakeimg.pl/250x100/'
   )
+
+  last_portfolio = Portfolio.last
+  3.times do |i|
+    last_portfolio.technologies.create!(name: "Technology #{i}")
+  end
 end
