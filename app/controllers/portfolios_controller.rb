@@ -1,23 +1,23 @@
 class PortfoliosController < ApplicationController
+  before_action :create_storage
   before_action :find_portfolio, only: [:show, :edit, :update, :destroy]
 
   def index
-    @portfolios = Portfolio.all
+    @portfolios = @storage.all
   end
 
   def show
   end
 
   def new
-    @portfolio = Portfolio.new
+    @portfolio = @storage.create_portfolio!
+    3.times { @portfolio.technologies.build }
   end
 
   def create
-    @portfolio = Portfolio.new(portfolio_params)
+    @portfolio = @storage.create_portfolio!(portfolio_params)
     respond_to do |format|
-      if @portfolio.save
-        format.html { redirect_to portfolios_path, notice: "New portfolio was created! :)" }
-      end
+      format.html { redirect_to portfolio_path @portfolio }
     end
   end
 
@@ -26,16 +26,16 @@ class PortfoliosController < ApplicationController
 
   def update
     respond_to do |format|
-      if @portfolio.update(portfolio_params)
+      if @storage.update(@portfolio, params: portfolio_params)
         format.html { redirect_to portfolios_path, notice: "Did change the portfolio #{@portfolio.id}" }
       end
     end
   end
 
   def destroy
-    respond_to do | format |
-      if @portfolio.destroy
-        format.html { redirect_to portfolios_path, notice: "Portfolio #{@portfolio.title} was deleted!"}
+    respond_to do |format|
+      if @storage.delete @portfolio
+        format.html { redirect_to portfolios_path, notice: "Portfolio #{@portfolio.title} was deleted!" }
       end
     end
   end
@@ -43,10 +43,14 @@ class PortfoliosController < ApplicationController
   private
 
   def portfolio_params
-    params.require(:portfolio).permit(:title, :subtitle, :body)
+    params.require(:portfolio).permit(:title, :subtitle, :body, technologies_attributes: [:name])
   end
 
   def find_portfolio
-    @portfolio = Portfolio.find(params[:id])
+    @portfolio = @storage.find_by_id params[:id]
+  end
+
+  def create_storage
+    @storage = PortfolioStorage.new
   end
 end
