@@ -79,5 +79,5 @@ group :development do
   gem 'binding_of_caller'
 end
 
-gem 'devise'
+gem 'devise', '4.2.0'
 gem 'friendly_id'
