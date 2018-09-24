@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root to: 'posts#index'
   get 'pages/about'
   get 'pages/contact'
+  get 'pages/home'
+  
   resources :posts, exlude: [:show] do
     member do
       get :toggle_status
