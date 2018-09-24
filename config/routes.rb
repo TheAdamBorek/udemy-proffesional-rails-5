@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+  devise_for :user, path: '', path_names: {sign_in: 'login', sign_out: 'logout', sign_up: 'register'}
   root to: 'posts#index'
   get 'pages/about'
   get 'pages/contact'
+  get 'pages/home'
+  
   resources :posts, exlude: [:show] do
     member do
       get :toggle_status
