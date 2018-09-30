@@ -9,7 +9,6 @@
 </head>
 
 <body>
-<%= yield %>
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 <% if current_user %>
@@ -17,6 +16,11 @@
 <% else %>
   <%= link_to 'Log in', new_user_session_path %>
   <%= link_to 'Register', new_user_registration_path %>
+<% end %>
+
+<%= yield %>
+<% unless get_source.blank? %>
+  <p>Thanks for visiting my <%= get_source %></p>
 <% end %>
 </body>
 </html>
