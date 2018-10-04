@@ -3,15 +3,13 @@
 <head>
   <title><%=@page_title%></title>
   <%= csrf_meta_tags %>
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'posts', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 
 <body>
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
-
-<%= render 'shared/navigation' %>
 
 <% if current_user.is_authenticated %>
   <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
@@ -21,6 +19,9 @@
 <% end %>
 
 <%= yield %>
+
+<%= render 'shared/navigation' %>
+
 <% unless get_source.blank? %>
   <p>Thanks for visiting my <%= get_source %></p>
 <% end %>
