@@ -3,7 +3,7 @@ class PortfoliosController < ApplicationController
   before_action :find_portfolio, only: [:show, :edit, :update, :destroy]
 
   def index
-    @portfolios = @storage.all
+    @portfolio_items = @storage.all
   end
 
   def show
