@@ -15,8 +15,6 @@
 <%= show_login_logout_section %>
 
 <%= yield %>
-<% unless get_source.blank? %>
-  <p>Thanks for visiting my <%= get_source %></p>
-<% end %>
+<%= show_source %>
 </body>
 </html>

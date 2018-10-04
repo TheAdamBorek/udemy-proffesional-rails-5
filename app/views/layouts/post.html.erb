@@ -10,15 +10,9 @@
 <body>
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
-
 <%= show_login_logout_section %>
-
 <%= yield %>
-
 <%= render 'shared/navigation' %>
-
-<% unless get_source.blank? %>
-  <p>Thanks for visiting my <%= get_source %></p>
-<% end %>
+<%= show_source %>
 </body>
 </html>
