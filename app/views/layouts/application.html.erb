@@ -12,13 +12,7 @@
 <p class="alert"><%= alert %></p>
 
 <%= render 'shared/navigation' %>
-
-<% if current_user.is_authenticated %>
-  <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
-<% else %>
-  <%= link_to 'Log in', new_user_session_path %>
-  <%= link_to 'Register', new_user_registration_path %>
-<% end %>
+<%= show_login_logout_section %>
 
 <%= yield %>
 <% unless get_source.blank? %>
