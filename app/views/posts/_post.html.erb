@@ -1,6 +1,7 @@
 <tr>
   <td><%= post.title %></td>
   <td><%= post.body %></td>
+  <td>Published <%= time_ago_in_words(post.created_at, include_seconds: true) %> ago</td>
   <td><%= link_to post.status, toggle_status_post_path(post) %></td>
   <td><%= link_to 'Show', post %></td>
   <td><%= link_to 'Edit', edit_post_path(post) %></td>
