@@ -1,6 +1,6 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :technology do
-    name "MyString"
+    name { "MyString" }
     portfolio nil
   end
 end

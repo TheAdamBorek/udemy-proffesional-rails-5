@@ -1,6 +1,6 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :post do
-    title "MyText"
-    body "MyText"
+    title { "MyText" }
+    body { "MyText" }
   end
 end
